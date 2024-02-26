@@ -4,8 +4,26 @@ import com.myself223.govnodlyaneadekvatov.Data.CounterModel
 import com.myself223.govnodlyaneadekvatov.MainActivity
 
 class CounterPresenter(private val model:CounterModel)
-    : PreseterContracts.counterPresenter {
-    private lateinit var counterView:PreseterContracts.counterView
+    : PresenterContracts.counterPresenter {
+    private lateinit var counterView:PresenterContracts.counterView
+    override fun visible() {
+        if (model.count == 20){
+            counterView.getVisible()
+
+        }
+
+    }
+
+    override fun invisible() {
+        if (model.count  > 20){
+            counterView.getInvisible()
+        }
+        if (model.count  < 20){
+            counterView.getInvisible()
+        }
+
+    }
+
     override fun changeColor() {
         if (model.count== 10){
             counterView.color()
